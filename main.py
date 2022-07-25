@@ -27,6 +27,14 @@ def aboutid(id):
 def aboutid(id):
     return {'data':id}
 
+@app.get('/aboutit')
+def aboutid(limit,published:bool):
+    if published:
+        blog = {'data':f'{limit} published blogs in the db'}
+    else:
+        blog = {'data':f'{limit} blogs in the db'}
+    return blog
+
 @app.get('/published/')
 def published(limit,publish:bool,sort:Optional[str]):
     if publish:
